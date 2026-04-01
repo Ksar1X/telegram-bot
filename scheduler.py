@@ -27,8 +27,8 @@ async def poll_once(client: httpx.AsyncClient):
         logger.info(f"Polling for: {query}")
 
         for fetcher, source_name in [
-            (fetch_olx, "OLX"),
-            (fetch_allegro, "Allegro"),
+#            (fetch_olx, "OLX"),
+#            (fetch_allegro, "Allegro"),
             (fetch_vinted, "Vinted"),
         ]:
             try:

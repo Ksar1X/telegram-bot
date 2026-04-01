@@ -26,24 +26,24 @@ def _format_message(listing: Listing) -> str:
     ]
 
     if listing.price:
-        lines.append(f"💰 <b>Cena:</b> {listing.price}")
+        lines.append(f"💰 <b>Цена:</b> {listing.price}")
     else:
-        lines.append("💰 <b>Cena:</b> brak danych")
+        lines.append("💰 <b>Цена:</b> нет данных")
 
     if listing.condition:
-        lines.append(f"📦 <b>Stan:</b> {listing.condition}")
+        lines.append(f"📦 <b>Состояние:</b> {listing.condition}")
 
     if listing.location:
-        lines.append(f"📍 <b>Lokalizacja:</b> {listing.location}")
+        lines.append(f"📍 <b>Локализация:</b> {listing.location}")
 
     if listing.seller:
-        lines.append(f"👤 <b>Sprzedający:</b> {listing.seller}")
+        lines.append(f"👤 <b>Продавец:</b> {listing.seller}")
 
     if listing.description:
         desc = listing.description[:300] + "…" if len(listing.description) > 300 else listing.description
         lines.append(f"\n📝 {desc}")
 
-    lines.append(f"\n🔗 <a href='{listing.url}'>Zobacz ogłoszenie</a>")
+    lines.append(f"\n🔗 <a href='{listing.url}'>Посмотри объявление</a>")
 
     return "\n".join(lines)
 

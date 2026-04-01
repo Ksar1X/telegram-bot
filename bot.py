@@ -38,18 +38,18 @@ async def handle_update(update: dict, client: httpx.AsyncClient):
 
     if text in ("/start", "/start@" + (await _get_bot_username(client)).lower()):
         set_alerts_enabled(True)
-        await send_plain("✅ <b>Alerty włączone.</b>\nBędę wysyłać nowe ogłoszenia iPhone'ów z OLX, Allegro i Vinted.", client)
+        await send_plain("✅ <b>Оповещения включены.</b>\nБуду присылать тебе новые оповещения с OLX, Allegro i Vinted.", client)
         logger.info("Alerts enabled by user command.")
 
     elif text in ("/stop", "/stop@" + (await _get_bot_username(client)).lower()):
         set_alerts_enabled(False)
-        await send_plain("🔕 <b>Alerty wyłączone.</b>\nNie będę już wysyłać nowych ogłoszeń. Użyj /start aby wznowić.", client)
+        await send_plain("🔕 <b>Оповещения выключены.</b>\nНе буду присылать тебе новые оповещегния. Напиши /start, чтобы получать их.", client)
         logger.info("Alerts disabled by user command.")
 
     elif text == "/status":
         enabled = get_alerts_enabled()
-        status = "✅ włączone" if enabled else "🔕 wyłączone"
-        await send_plain(f"ℹ️ Alerty są teraz: <b>{status}</b>", client)
+        status = "✅ Включено" if enabled else "🔕 Выключено"
+        await send_plain(f"ℹ️ Оповещения сейчас: <b>{status}</b>", client)
 
 
 _bot_username_cache = None
@@ -104,7 +104,7 @@ async def main():
         timeout=httpx.Timeout(40.0),
         follow_redirects=True,
     ) as client:
-        await send_plain("🤖 <b>Bot uruchomiony!</b>\nMonitoruję OLX, Allegro i Vinted w poszukiwaniu iPhone'ów.\nUżyj /stop aby wyłączyć alerty.", client)
+        await send_plain("🤖 <b>Бот работает!</b>\nМониторю OLX, Allegro i Vinted в поиске iPhone'ов.\nИспользуй /stop чтобы выключить уведомления.", client)
 
         # Run both loops concurrently
         await asyncio.gather(
